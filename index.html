@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html> 
+ <head>
+    <title>Jeopardy</title> 
+</head>
+ <body>
+    <p align="center"> 
+      <canvas id="mycanvas"></canvas> 
+    </p>
+    <audio controls autoplay loop>
+  <source src="Jeopardy.mp3" type="audio/mpeg">
+HA YOU CANT LISTEN TO THE JEOPARDY THEME
+</audio> 
+ </body>
+ 
+ 
+ <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+ 
+ <script>
+    var sketchProc = function(processingInstance) {
+     with (processingInstance) {
+        size(600, 600); 
+        frameRate(60);
+        //I tried to program with the cleanest code possible (that i could do).
+var bold1 = 0;
+var points = 0;
+var points1 = 0;
+var points2 = 0;
+var points3 = 0;
+var points4 = 0;
+var pointMode = 0;
+var cTr = 1000; 
+var f = createFont("comic sans ms");
+var cMr = 0;
+var Displayt = function(){}; 
+Displayt.prototype.display = function(){
+//yN buttons
+        stroke(0, 0, 0);
+      fill(6, 12, 233);
+      rect(0, 500, 120, 100);
+      rect(120, 500, 120, 100);
+      rect(240, 500, 120, 100);
+      rect(360, 500, 120, 100);
+      rect(480, 500, 120, 100);
+      noStroke();
+      fill(0, 255, 0);
+      rect(24, 564, 20, 20);
+      rect(24+125, 564, 20, 20);
+      rect(24+125+120, 564, 20, 20);
+      rect(24+125+120+120, 564, 20, 20);
+      rect(24+125+120+120+120, 564, 20, 20);
+      fill(255, 0, 0);
+      rect(69, 564, 20, 20);
+      rect(69+125, 564, 20, 20);
+      rect(69+125+120, 564, 20, 20);
+      rect(69+125+120+120, 564, 20, 20);
+      rect(69+125+120+120+120, 564, 20, 20);
+      fill(0, 0, 0);
+      textSize(20);
+      text("↑", 29, 579);
+      text("↑", 29+125, 579);
+      text("↑", 29+125+125-5, 579);
+      text("↑", 29+125+125-5+120, 579);
+      text("↑", 29+125+125-5+120+120, 579);
+      text("↓", 75+245+120+121, 579);
+      text("↓", 75, 579);
+      text("↓", 75+245+120, 579);
+      text("↓", 75+245, 579);
+      text("↓", 75+125, 579);
+      textSize(20);
+      //guests
+      fill(255, 204, 0);
+      text("Guest 1\n     " + points, 24, 529);
+      text("Guest 2\n     " + points1, 24+125, 529);
+      text("Guest 3\n     " + points2, 24+240+5, 529);
+      text("Guest 4\n     " + points3, 24+360+5, 529);
+      text("Guest 5\n     " + points4, 24+480+5, 529);
+};
+Displayt.prototype.update = function(){
+//yN buttons
+        stroke(0, 0, 0);
+      fill(6, 12, 233);
+      rect(0, 500, 120, 100);
+      rect(120, 500, 120, 100);
+      rect(240, 500, 120, 100);
+      rect(360, 500, 120, 100);
+      rect(480, 500, 120, 100);
+      noStroke();
+      fill(0, 255, 0);
+      rect(24, 564, 20, 20);
+      rect(24+125, 564, 20, 20);
+      rect(24+125+120, 564, 20, 20);
+      rect(24+125+120+120, 564, 20, 20);
+      rect(24+125+120+120+120, 564, 20, 20);
+      fill(255, 0, 0);
+      rect(69, 564, 20, 20);
+      rect(69+125, 564, 20, 20);
+      rect(69+125+120, 564, 20, 20);
+      rect(69+125+120+120, 564, 20, 20);
+      rect(69+125+120+120+120, 564, 20, 20);
+      fill(0, 0, 0);
+      textSize(20);
+      text("^", 28, 584);
+      text("^", 28+125, 584);
+      text("^", 28+125+125-5, 584);
+      text("^", 29+125+125-5+120, 584);
+      text("^", 27+125+125-5+120+120, 584);
+      textSize(37);
+      text("˅", 73+245+120+121, 592);
+      text("˅", 73, 592);
+      text("˅", 73+245+120, 592);
+      text("˅", 73+245, 592);
+      text("˅", 73+125, 592);
+      textSize(20);
+      //guests
+      fill(255, 204, 0);
+      text("Guest 1\n     " + points, 24, 529);
+      text("Guest 2\n     " + points1, 24+125, 529);
+      text("Guest 3\n     " + points2, 24+240+5, 529);
+      text("Guest 4\n     " + points3, 24+360+5, 529);
+      text("Guest 5\n     " + points4, 24+480+5, 529);
+};
+var fill1 = color(6,12,233); var fill2 = color(6,12,233); var fill3 = color(6,12,233);var fill4 = color(6,12,233);var fill5 = color(6,12,233); var fill6 = color(6,12,233); var fill7 = color(6,12,233); var fill8 = color(6,12,233);var fill9 = color(6,12,233);var fill10 = color(6,12,233); var fill11 = color(6,12,233); var fill12 = color(6,12,233); var fill13 = color(6,12,233);var fill14 = color(6,12,233);var fill15 = color(6,12,233); var fill16 = color(6,12,233); var fill17 = color(6,12,233); var fill18 = color(6,12,233);var fill19 = color(6,12,233);var fill20 = color(6,12,233);
+var Title = function(){
+this.position = new PVector(width/2, -60);
+};
+Title.prototype.display = function(){
+    textSize(90);
+    fill(0, 0, 0);
+    text("J e o p a r d y!", this.position.x-289+7, this.position.y);
+    fill(255, 204, 0); 
+    text("J e o p a r d y!", this.position.x-296+7, this.position.y);
+};
+Title.prototype.update = function(){
+    if(this.position.y <= height/2-15){
+        this.position.y += 1;
+    }
+};
+var scene = "start";
+var MouseOverProtocol = function(){
+var color1 = color(255, 255, 255);
+};
+MouseOverProtocol.prototype.mouseOver = function(){
+if(scene === "start" && mouseX >= width/2-160*0.5 && mouseX <= width/2-160*0.5+160 && mouseY >= height/2+56 && mouseY <= height/2+56+74){
+        this.color1 = color(209, 209, 209);
+    } else {
+        this.color1 = color(255, 255, 255);
+    }
+if(scene === "game" && mouseX >= 0 && mouseX <= 120 && mouseY >= 100 && mouseY <= 200){
+        fill1 = color(0,191,255);
+    } else { fill1 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 0 && mouseX <= 120 && mouseY >= 200 && mouseY <= 300){
+        fill2 = color(0,191,255);
+    } else { fill2 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 0 && mouseX <= 120 && mouseY >= 300 && mouseY <= 400){
+        fill3 = color(0,191,255);
+    } else { fill3 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 0 && mouseX <= 120 && mouseY >= 400 && mouseY <= 500){
+        fill4 = color(0,191,255);
+    } else { fill4 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 120 && mouseX <= 240 && mouseY >= 100 && mouseY <= 200){
+        fill5 = color(0,191,255);
+    } else { fill5 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 120 && mouseX <= 240 && mouseY >= 200 && mouseY <= 300){
+        fill6 = color(0,191,255);
+    } else { fill6 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 120 && mouseX <= 240 && mouseY >= 300 && mouseY <= 400){
+        fill7 = color(0,191,255);
+    } else { fill7 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 120 && mouseX <= 240 && mouseY >= 400 && mouseY <= 500){
+        fill8 = color(0,191,255);
+    } else { fill8 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 240 && mouseX <= 360 && mouseY >= 100 && mouseY <= 200){
+        fill9 = color(0,191,255);
+    } else { fill9 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 240 && mouseX <= 360 && mouseY >= 200 && mouseY <= 300){
+        fill10 = color(0,191,255);
+    } else { fill10 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 240 && mouseX <= 360 && mouseY >= 300 && mouseY <= 400){
+        fill11 = color(0,191,255);
+    } else { fill11 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 240 && mouseX <= 360 && mouseY >= 300 && mouseY <= 400){
+        fill11 = color(0,191,255);
+    } else { fill11 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 240 && mouseX <= 360 && mouseY >= 400 && mouseY <= 500){
+        fill12 = color(0,191,255);
+    } else { fill12 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 360 && mouseX <= 480 && mouseY >= 100 && mouseY <= 200){
+        fill13 = color(0,191,255);
+    } else { fill13 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 360 && mouseX <= 480 && mouseY >= 200 && mouseY <= 300){
+        fill14 = color(0,191,255);
+    } else { fill14 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 360 && mouseX <= 480 && mouseY >= 200 && mouseY <= 300){
+        fill15 = color(0,191,255);
+    } else { fill15 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 360 && mouseX <= 480 && mouseY >= 300 && mouseY <= 400){
+        fill15 = color(0,191,255);
+    } else { fill15 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 360 && mouseX <= 480 && mouseY >= 400 && mouseY <= 500){
+        fill16 = color(0,191,255);
+    } else { fill16 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 480 && mouseX <= 600 && mouseY >= 100 && mouseY <= 200){
+        fill17 = color(0,191,255);
+    } else { fill17 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 480 && mouseX <= 600 && mouseY >= 200 && mouseY <= 300){
+        fill18 = color(0,191,255);
+    } else { fill18 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 480 && mouseX <= 600 && mouseY >= 300 && mouseY <= 400){
+        fill19 = color(0,191,255);
+    } else { fill19 = color(6, 12, 233);}
+if(scene === "game" && mouseX >= 480 && mouseX <= 600 && mouseY >= 400 && mouseY <= 500){
+        fill20 = color(0,191,255);
+    } else { fill20 = color(6, 12, 233);}
+};
+var title = new Title();
+var mouseO = new MouseOverProtocol();
+var displayt = new Displayt();
+draw= function() { 
+strokeWeight(bold1);
+    if(scene === "start"){
+    background(6,12,233);
+    bold1 = 4;
+     if(title.position.y >= height/2-15){
+        fill(mouseO.color1);
+        rect(width/2-160*0.5, height/2+56, 160, 74);
+        fill(0, 0, 0);
+        textSize(45);
+        text("Start!", width/2-57, height/2+110);
+    } 
+    title.display();
+    title.update();
+    } else{bold1 = 0;}
+    if(scene === "game"){
+    pointMode = 0;
+      background(6,12,233);  
+      stroke(0, 0, 0);
+      fill(6, 12, 233);
+      rect(120, 0, 120, 100);
+      rect(120+120, 0, 120, 100);
+      rect(120+120+120, 0, 120, 100);
+      rect(120+120+120+120, 0, 120, 100);
+      fill(fill1);
+      rect(0, 100, 120, 100);
+      fill(fill2);
+      rect(0, 200, 120, 100);
+      fill(fill3);
+      rect(0, 300, 120, 100);
+      fill(fill4);
+      rect(0, 400, 120, 100);
+      fill(fill5);
+      rect(120, 100, 120, 100);
+      fill(fill6);
+      rect(120, 200, 120, 100);
+      fill(fill7);
+      rect(120, 300, 120, 100);
+      fill(fill8);
+      rect(120, 400, 120, 100);
+      fill(fill9);
+      rect(120+120, 100, 120, 100);
+      fill(fill10);
+      rect(120+120, 200, 120, 100);
+      fill(fill11);
+      rect(120+120, 300, 120, 100);
+      fill(fill12);
+      rect(120+120, 400, 120, 100);
+      fill(fill13);
+      rect(120+120+120, 100, 120, 100);
+      fill(fill14);
+      rect(120+120+120, 200, 120, 100);
+      fill(fill15);
+      rect(120+120+120, 300, 120, 100);
+      fill(fill16);
+      rect(120+120+120, 400, 120, 100);
+      fill(fill17);
+      rect(120+120+120+120, 100, 120, 100);
+      fill(fill18);
+      rect(120+120+120+120, 200, 120, 100);
+      fill(fill19);
+      rect(120+120+120+120, 300, 120, 100);
+      fill(fill20);
+      rect(120+120+120+120, 400, 120, 100);
+      fill(6, 12, 233);
+      rect(0, 500, 120, 100);
+      rect(120, 500, 120, 100);
+      rect(240, 500, 120, 100);
+      rect(360, 500, 120, 100);
+      rect(480, 500, 120, 100);
+      fill(255, 204, 0);
+      textSize(20);
+      //topics
+      text("Inventions", 10, 55);
+      text("Inventors", 137, 55);
+      text("Vocabulary", 252, 55);
+      textSize(17);
+      text(" Industrial\nRevolution", 379, 47);
+      textSize(15);
+      text("Miscellaneous", 492, 55);
+      textSize(20);
+      //guests
+      text("Guest 1\n     " + points, 24, 529);
+      text("Guest 2\n     " + points1, 24+125, 529);
+      text("Guest 3\n     " + points2, 24+240+5, 529);
+      text("Guest 4\n     " + points3, 24+360+5, 529);
+      text("Guest 5\n     " + points4, 24+480+5, 529);
+      //points
+      textSize(45);
+      text("100", 15, 166);
+      text("100", 135, 166);
+      text("100", 15+120+120, 166);
+      text("100", 15+120+120+120, 166);
+      text("100", 15+120+120+120+120, 166);
+      text("200", 15, 166+105);
+      text("200", 135, 166+105);
+      text("200", 15+120+122, 166+105);
+      text("200", 15+120+120+122, 166+105);
+      text("200", 15+120+120+120+122, 166+105);
+      text("300", 15, 166+105+105);
+      text("300", 135, 166+105+105);
+      text("300", 15+120+122, 166+105+105);
+      text("300", 15+120+120+122, 166+105+105);
+      text("300", 15+120+120+120+122, 166+105+105);
+      text("400", 15, 166+105+105+95);
+      text("400", 135, 166+105+105+95);
+      text("400", 15+120+122, 166+105+105+95);
+      text("400", 15+120+120+122, 166+105+105+95);
+      text("400", 15+120+120+120+122, 166+105+105+95);
+      //yN buttons
+      noStroke();
+      fill(0, 255, 0);
+      rect(24, 564, 20, 20);
+      rect(24+125, 564, 20, 20);
+      rect(24+125+120, 564, 20, 20);
+      rect(24+125+120+120, 564, 20, 20);
+      rect(24+125+120+120+120, 564, 20, 20);
+      fill(255, 0, 0);
+      rect(69, 564, 20, 20);
+      rect(69+125, 564, 20, 20);
+      rect(69+125+120, 564, 20, 20);
+      rect(69+125+120+120, 564, 20, 20);
+      rect(69+125+120+120+120, 564, 20, 20);
+      fill(0, 0, 0);
+       textSize(20);
+      text("↑", 29, 579);
+      text("↑", 29+125, 579);
+      text("↑", 29+125+125-5, 579);
+      text("↑", 29+125+125-5+120, 579);
+      text("↑", 29+125+125-5+120+120, 579);
+      text("↓", 75+245+120+121, 579);
+      text("↓", 75, 579);
+      text("↓", 75+245+120, 579);
+      text("↓", 75+245, 579);
+      text("↓", 75+125, 579);
+      textSize(20);
+      
+    }
+    if(scene === "hot1"){
+    textFont(f);
+    background(6,12,233);
+    pointMode = 100;
+    fill(255, 204, 0);
+    textSize(29);
+    text("       What invention made it easier to \nseperate cotton seeds from picked cotton?", 5, 85);
+       textSize(20);
+    text("(Click to reveal answer)", 185, 212);
+       displayt.display(); 
+    }
+    if(scene === "hot2"){
+    pointMode = 200;
+         background(6,12,233);
+         displayt.display(); 
+    }
+    if(scene === "hot3"){
+        pointMode = 300;
+    background(6,12,233);
+    textSize(40);
+    text("", 10, 115);
+    textSize(20);
+    text("(Click to reveal answer)", 198, 249);
+    textSize(30);
+text("   ", cTr-64, 328);
+    if(cTr <= 198){
+        cTr = 198;
+    }
+         displayt.display(); 
+    }
+    if(scene === "hot4"){
+        pointMode = 400;
+         background(6,12,233);
+        displayt.display(); 
+    }
+//Inventors 400 -> Daily double -> What proggraming language is this made in?
+//Inventors 300 -> Francis Cabot Lowell
+//invi. 400 -> what did the waterframe and spinning jenny do?
+//Misc 100 -> When time did industrial revolution start
+//Vocab -> what is a patent, what is technology, capitalism, etc., 
+//Misc 200 -> What is gin short for?
+//inve 100 -> what did robert fulton do?
+//inve 400 -> how did samuel slater make the slaters mill, an important step in the industrial revolution? A- He memorized the design of the machines used in the British factories, and built copies in the United states.
+if(scene === "error1"){
+    stroke(0, 0, 0);
+    fill(255, 255, 255, 0.5);
+    rect(0, 0, width, height);
+    fill(255, 255, 255);
+    rect(width/2-300*0.5, height/2-200*0.5, 300, 200);
+    fill(255, 0, 0);
+    text("ERROR: You tried to add or \nsubtract points when there were\nno points available to be added\nor subtracted.\nError Code: 505\n(click to exit)", 163, 236);
+}
+    mouseO.mouseOver();
+};
+mouseClicked = function(){
+if(scene === "hot1"){
+    
+}
+if(scene === "hot2"){
+    
+}
+if(scene === "hot3"){
+    cTr -= 802;
+}
+if(scene === "hot4"){
+    
+}
+if(scene === "error1"){
+    scene = "game";
+}
+    if(scene === "start" && mouseX >= width/2-160*0.5 && mouseX <= width/2-160*0.5+160 && mouseY >= height/2+56 && mouseY <= height/2+56+74){
+        this.color1 = color(209, 209, 209);
+        scene = "game";
+    }
+    
+    if(scene === "game" && mouseX >= 0 && mouseX <= 120 && mouseY >= 100 && mouseY <= 200){
+       scene = "hot1";
+    } 
+    if(mouseX >= 24 && mouseX <= 24+20 && mouseY >= 564 && mouseY <= 564+20){
+        points += pointMode;
+        displayt.update();
+    } 
+if(mouseX >= 24 && mouseX <= 24+20 && mouseY >= 564 && mouseY <= 564+20 && pointMode === 0){
+        scene = "error1";
+    } 
+if(scene === "game" && mouseX >= 0 && mouseX <= 120 && mouseY >= 200 && mouseY <= 300){
+       scene = "hot2";
+    } 
+    
+if(scene === "game" && mouseX >= 0 && mouseX <= 120 && mouseY >= 300 && mouseY <= 400){
+        scene = "hot3";
+    } 
+    
+if(scene === "game" && mouseX >= 0 && mouseX <= 120 && mouseY >= 400 && mouseY <= 500){
+         scene = "hot4";
+    } 
+    
+if(scene === "game" && mouseX >= 120 && mouseX <= 240 && mouseY >= 100 && mouseY <= 200){
+        
+    } 
+    
+if(scene === "game" && mouseX >= 120 && mouseX <= 240 && mouseY >= 200 && mouseY <= 300){
+        
+    } 
+    
+if(scene === "game" && mouseX >= 120 && mouseX <= 240 && mouseY >= 300 && mouseY <= 400){
+        
+    } 
+    
+if(scene === "game" && mouseX >= 120 && mouseX <= 240 && mouseY >= 400 && mouseY <= 500){
+       
+    } 
+    
+if(scene === "game" && mouseX >= 240 && mouseX <= 360 && mouseY >= 100 && mouseY <= 200){
+        
+    } 
+    
+if(scene === "game" && mouseX >= 240 && mouseX <= 360 && mouseY >= 200 && mouseY <= 300){
+       
+    } 
+    
+if(scene === "game" && mouseX >= 240 && mouseX <= 360 && mouseY >= 300 && mouseY <= 400){
+        
+    } 
+    
+if(scene === "game" && mouseX >= 240 && mouseX <= 360 && mouseY >= 300 && mouseY <= 400){
+        
+    }
+    
+if(scene === "game" && mouseX >= 240 && mouseX <= 360 && mouseY >= 400 && mouseY <= 500){
+        
+    } 
+    
+if(scene === "game" && mouseX >= 360 && mouseX <= 480 && mouseY >= 100 && mouseY <= 200){
+       
+    } 
+    
+if(scene === "game" && mouseX >= 360 && mouseX <= 480 && mouseY >= 200 && mouseY <= 300){
+        
+    }
+    
+if(scene === "game" && mouseX >= 360 && mouseX <= 480 && mouseY >= 200 && mouseY <= 300){
+       
+    }
+    
+if(scene === "game" && mouseX >= 360 && mouseX <= 480 && mouseY >= 300 && mouseY <= 400){
+       
+    } 
+    
+if(scene === "game" && mouseX >= 360 && mouseX <= 480 && mouseY >= 400 && mouseY <= 500){
+      
+    } 
+    
+if(scene === "game" && mouseX >= 480 && mouseX <= 600 && mouseY >= 100 && mouseY <= 200){
+        
+    } 
+    
+if(scene === "game" && mouseX >= 480 && mouseX <= 600 && mouseY >= 200 && mouseY <= 300){
+       
+    } 
+    
+if(scene === "game" && mouseX >= 480 && mouseX <= 600 && mouseY >= 300 && mouseY <= 400){
+        
+    } 
+    
+if(scene === "game" && mouseX >= 480 && mouseX <= 600 && mouseY >= 400 && mouseY <= 500){
+        
+    } 
+};
+
+        
+    }};
+
+    
+    var canvas = document.getElementById("mycanvas"); 
+   
+    var processingInstance = new Processing(canvas, sketchProc); 
+ </script>
+
+</html>
