@@ -32,9 +32,10 @@ var points2 = 0;
 var points3 = 0;
 var points4 = 0;
 var pointMode = 0;
-var cTr = 1000; 
+var po = 0;
 var f = createFont("comic sans ms");
 var cMr = 0;
+var subscene = "none";
 var Displayt = function(){}; 
 Displayt.prototype.display = function(){
 //yN buttons
@@ -128,11 +129,11 @@ var Title = function(){
 this.position = new PVector(width/2, -60);
 };
 Title.prototype.display = function(){
-    textSize(90);
+    textFont(f, 90);
     fill(0, 0, 0);
-    text("J e o p a r d y!", this.position.x-289+7, this.position.y);
+    text("J e o p a r d y!", this.position.x-314+7, this.position.y);
     fill(255, 204, 0); 
-    text("J e o p a r d y!", this.position.x-296+7, this.position.y);
+    text("J e o p a r d y!", this.position.x-308+7, this.position.y);
 };
 Title.prototype.update = function(){
     if(this.position.y <= height/2-15){
@@ -144,7 +145,7 @@ var MouseOverProtocol = function(){
 var color1 = color(255, 255, 255);
 };
 MouseOverProtocol.prototype.mouseOver = function(){
-if(scene === "start" && mouseX >= width/2-160*0.5 && mouseX <= width/2-160*0.5+160 && mouseY >= height/2+56 && mouseY <= height/2+56+74){
+if(scene === "start" && mouseX >= width/2-160/2 && mouseX <= width/2-160/2+160 && mouseY >= height/2+-301 && mouseY <=height/2+-301+100){
         this.color1 = color(209, 209, 209);
     } else {
         this.color1 = color(255, 255, 255);
@@ -215,7 +216,8 @@ if(scene === "game" && mouseX >= 480 && mouseX <= 600 && mouseY >= 300 && mouseY
 if(scene === "game" && mouseX >= 480 && mouseX <= 600 && mouseY >= 400 && mouseY <= 500){
         fill20 = color(0,191,255);
     } else { fill20 = color(6, 12, 233);}
-};
+};//Dont try to cheat
+var revealAnswer = false;
 var title = new Title();
 var mouseO = new MouseOverProtocol();
 var displayt = new Displayt();
@@ -225,16 +227,17 @@ strokeWeight(bold1);
     background(6,12,233);
     bold1 = 4;
      if(title.position.y >= height/2-15){
-        fill(mouseO.color1);
-        rect(width/2-160*0.5, height/2+56, 160, 74);
+         fill(mouseO.color1);
+        rect(width/2-160/2, height/2+-301, 160, 100);
         fill(0, 0, 0);
         textSize(45);
-        text("Start!", width/2-57, height/2+110);
+        text("Start!", width/2-62, height/2+-235);
     } 
     title.display();
     title.update();
     } else{bold1 = 0;}
     if(scene === "game"){
+        revealAnswer = false;
     pointMode = 0;
       background(6,12,233);  
       stroke(0, 0, 0);
@@ -357,8 +360,9 @@ strokeWeight(bold1);
       textSize(20);
       
     }
-    if(scene === "hot1"){
+    textSize(20);
     textFont(f);
+    if(scene === "hot1"){
     background(6,12,233);
     pointMode = 100;
     fill(255, 204, 0);
@@ -366,74 +370,378 @@ strokeWeight(bold1);
     text("       What invention made it easier to \nseperate cotton seeds from picked cotton?", 5, 85);
        textSize(20);
     text("(Click to reveal answer)", 185, 212);
+    if(revealAnswer === true){
+        textSize(30);
+        text("The Cotton Gin", width/6+83, height/2+15);
+    }
        displayt.display(); 
     }
+    textSize(20);
     if(scene === "hot2"){
     pointMode = 200;
-         background(6,12,233);
-         displayt.display(); 
+    background(6,12,233);
+    fill(255, 204, 0);
+    textSize(40);
+    text("What are interchangeable\nparts?", 30, 115);
+    textSize(20);
+    text("(Click to reveal answer)", 189, 249);
+    textSize(30);
+    if(revealAnswer === true){
+        text("Parts that can easily be switched out\nif the part breaks, rather than repairing\nthe entire machine.", width/6-76, height/2+15);
     }
+     displayt.display(); 
+    }
+    textSize(10);
     if(scene === "hot3"){
         pointMode = 300;
     background(6,12,233);
     textSize(40);
-    text("", 10, 115);
+    text("What did the power loom do?", 30, 115);
     textSize(20);
-    text("(Click to reveal answer)", 198, 249);
+    text("(Click to reveal answer)", 189, 249);
     textSize(30);
-text("   ", cTr-64, 328);
-    if(cTr <= 198){
-        cTr = 198;
+    if(revealAnswer === true){
+        text("It made weaving clothing easier", width/6-18, height/2+15);
     }
          displayt.display(); 
     }
     if(scene === "hot4"){
         pointMode = 400;
          background(6,12,233);
+         textSize(40);
+         text("What did the Waterframe and the \n            Spinning Jenny do?", 10, 115);
+         textSize(20);
+         text("(Click to reveal answer)", 198, 249);
+         if(revealAnswer === true){
+             textSize(30);
+    text("They made it easier to spin cloth", 53, 338);
+         }
         displayt.display(); 
     }
-//Inventors 400 -> Daily double -> What proggraming language is this made in?
-//Inventors 300 -> Francis Cabot Lowell
-//invi. 400 -> what did the waterframe and spinning jenny do?
-//Misc 100 -> When time did industrial revolution start
-//Vocab -> what is a patent, what is technology, capitalism, etc., 
-//Misc 200 -> What is gin short for?
-//inve 100 -> what did robert fulton do?
-//inve 400 -> how did samuel slater make the slaters mill, an important step in the industrial revolution? A- He memorized the design of the machines used in the British factories, and built copies in the United states.
+    if(scene === "inv1"){
+        pointMode = 100;
+         background(6,12,233);
+         textSize(40);
+         text("Who made the improved \n    Steamboat engine?", 73, 115);
+         textSize(20);
+         text("(Click to reveal answer)", 198, 249);
+         if(revealAnswer === true){
+             textSize(30);
+            text("Robert Fulton", 210, 307);
+         }
+        displayt.display(); 
+    }
+     if(scene === "inv2"){
+        pointMode = 200;
+         background(6,12,233);
+         textSize(40);
+         text("What did Eli Whitney do? ", 71, 115);
+         textSize(20);
+         text("(Click to reveal answer)", 198, 208);
+         if(revealAnswer === true){
+             textSize(30);
+            text("He created the cotton gin", 122, 307);
+         }
+        displayt.display(); 
+    }
+    if(scene === "inv3"){
+        pointMode = 300;
+         background(6,12,233);
+         textSize(40);
+         text("What did Francis Cabot Lowell\nmake/start? ", 11, 115);
+         textSize(20);
+         text("(Click to reveal answer)", 198, 227);
+         if(revealAnswer === true){
+             textSize(30);
+            text("He started the Lowell system of labor, \nwhere everybody works under one roof.", 23, 307);
+         }
+        displayt.display(); 
+    }
+    if(scene === "inv4"){
+        pointMode = 400;
+         background(6,12,233);
+         textSize(38);
+         text("How did Samuel Slater make \nthe Slaters Mill, an important \nstep in the industrial revolution? ", 14, 115);
+         textSize(20);
+         text("(Click to reveal answer)", 198, 262);
+         if(revealAnswer === true){
+             textSize(25);
+            text("He memorized the design of the machines used \nin the British factories, and built copies in the \nUnited states.", 23, 317);
+         }
+        displayt.display(); 
+    }
+    if(scene === "vocab1"){
+        pointMode = 100;
+         background(6,12,233);
+         textSize(50);
+         text("What is Technology? ", 74, 134);
+         textSize(20);
+         text("(Click to reveal answer)", 198, 236);
+         if(revealAnswer === true){
+             textSize(25);
+            text("Machinery and equipment developed from the\napplication of scientific knowledge.", 23, 317);
+         }
+        displayt.display(); 
+    }
+    if(scene === "vocab2"){
+        pointMode = 200;
+         background(6,12,233);
+         textSize(50);
+         text("What is a patent?", 101, 134);
+         textSize(20);
+         text("(Click to reveal answer)", 198, 236);
+         if(revealAnswer === true){
+             textSize(25);
+            text("A government authority or license conferring a \nright or title for a set period, especially the sole \nright to exclude others from making, using, or \nselling an invention.", 23, 317);
+         }
+        displayt.display(); 
+    }
+    if(scene === "vocab3"){
+        pointMode = 300;
+         background(6,12,233);
+         textSize(50);
+         text("What is capitalism?", 75, 134);
+         textSize(20);
+         text("(Click to reveal answer)", 198, 236);
+         if(revealAnswer === true){
+             textSize(25);
+            text("An economic and political system in which a \ncountry's trade and industry are controlled by \nprivate owners for profit, rather than by the \nstate.", 23, 317);
+         }
+        displayt.display(); 
+    }
+    if(scene === "vocab4"){
+        pointMode = 800;
+         background(6,12,233);
+         textSize(50);
+         text("DAILY DOUBLE!!!", 92, 112);
+         textSize(30);
+         text("What Programming language is this game\nwritten in?", 22, 171);
+         textSize(15);
+         text("(Click to reveal answer)", 217, 265);
+         if(revealAnswer === true){
+             textSize(18);
+            text("If you said one of these: Processing.JS, HTML, CSS then you are\ncorrect", 23, 346);
+         }
+        displayt.display(); 
+    }
+       if(scene === "ind1"){
+        pointMode = 100;
+         background(6,12,233);
+         textSize(30);
+         text("What is the Industrial Revolution mainly \nabout?", 23, 134);
+         textSize(20);
+         text("(Click to reveal answer)", 198, 236);
+         if(revealAnswer === true){
+             textSize(25);
+            text("The transformation of agricultural farming to \nworking in factories and machines.", 23, 317);
+         }
+        displayt.display(); 
+    }
+   if(scene === "ind2"){
+        pointMode = 200;
+         background(6,12,233);
+         textSize(30);
+         text("What were the child labor laws during \nthe  Industrial Revolution?", 23, 134);
+         textSize(20);
+         text("(Click to reveal answer)", 198, 236);
+         if(revealAnswer === true){
+             textSize(25);
+            text("There were no child labor laws during these times.", 12, 317);
+         }
+        displayt.display(); 
+    }
+if(scene === "ind3"){
+        pointMode = 300;
+         background(6,12,233);
+         textSize(30);
+         text("Near the beginning of the Industrial\nRevolution, were there more Urban citites \nor Rural towns?", 7, 134);
+         textSize(20);
+         text("(Click to reveal answer)", 198, 255);
+         if(revealAnswer === true){
+             textSize(25);
+            text("There were more Rural towns than Urban Cities.", 12, 317);
+         }
+        displayt.display(); 
+    }
+if(scene === "ind4"){
+        pointMode = 400;
+         background(6,12,233);
+         textSize(25);
+         text("What was the average life expectancy in the \nIndustrial Revolution?", 29, 113);
+         textSize(20);
+         text("(Click to reveal answer)", 198, 255);
+         if(revealAnswer === true){
+             textSize(25);
+            text("Around the 30's; less if you worked in a factory", 22, 327);
+         }
+        displayt.display(); 
+    }
+if(scene === "misc1"){
+        pointMode = 100;
+         background(6,12,233);
+         textSize(30);
+         text("What was the time period for the \n           Industrial Revolution?", 55, 113);
+         textSize(20);
+         text("(Click to reveal answer)", 198, 255);
+         if(revealAnswer === true){
+             textSize(25);
+            text("Around the years 1770-1870.", 131, 327);
+         }
+        displayt.display(); 
+    }
+if(scene === "misc2"){
+        pointMode = 200;
+         background(6,12,233);
+         textSize(30);
+         text("What is 'gin' short for?", 140, 113);
+         textSize(20);
+         text("(Click to reveal answer)", 198, 200);
+         if(revealAnswer === true){
+             textSize(25);
+            text("Engine", 275, 327);
+         }
+        displayt.display(); 
+    }
+if(scene === "misc3"){
+        pointMode = 300;
+         background(6,12,233);
+         textSize(30);
+         text("What country did the Industrial \nRevolution begin in?", 25, 109);
+         textSize(20);
+         text("(Click to reveal answer)", 198, 221);
+         if(revealAnswer === true){
+             textSize(25);
+            text("The Great Britain", 203, 327);
+         }
+        displayt.display(); 
+    }
+if(scene === "misc4"){
+        pointMode = 400;
+         background(6,12,233);
+         textSize(28);
+         text("What did some rich people do with their \nwealth made from the Industrial Revolution?", 4, 109);
+         textSize(20);
+         text("(Click to reveal answer)", 198, 221);
+         if(revealAnswer === true){
+             textSize(25);
+            text("Gave it away/Philanthropy", 156, 327);
+         }
+        displayt.display(); 
+    }
+
 if(scene === "error1"){
+    textSize(20);
     stroke(0, 0, 0);
     fill(255, 255, 255, 0.5);
     rect(0, 0, width, height);
     fill(255, 255, 255);
     rect(width/2-300*0.5, height/2-200*0.5, 300, 200);
     fill(255, 0, 0);
-    text("ERROR: You tried to add or \nsubtract points when there were\nno points available to be added\nor subtracted.\nError Code: 505\n(click to exit)", 163, 236);
+    text("ERROR: You tried to add or \nsubtract points when there \nwere no points available to be \nadded or subtracted.\nError Code: 505\n(click to exit)", 154, 236);
+}
+if(scene === "game"){
+    revealAnswer = false;
 }
     mouseO.mouseOver();
+  
 };
 mouseClicked = function(){
+
+if(cMr >= 1 && mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= 100){
+        scene = "game";
+    }
 if(scene === "hot1"){
-    
+    revealAnswer = true;
+    cMr += 1;
 }
 if(scene === "hot2"){
-    
+     revealAnswer = true;
+     cMr += 1;
 }
 if(scene === "hot3"){
-    cTr -= 802;
+   revealAnswer = true;
+    cMr += 1;
 }
 if(scene === "hot4"){
-    
+    revealAnswer = true;
+    cMr += 1;
+}
+if(scene === "inv1"){
+    revealAnswer = true;
+    cMr += 1;
+}
+if(scene === "inv2"){
+    revealAnswer = true;
+    cMr += 1;
+}
+if(scene === "inv3"){
+    revealAnswer = true;
+    cMr += 1;
+}
+if(scene === "inv4"){
+    revealAnswer = true;
+    cMr += 1;
+}
+if(scene === "vocab1"){
+    revealAnswer = true;
+    cMr += 1;
+}
+if(scene === "vocab2"){
+    revealAnswer = true;
+    cMr += 1;
+}
+if(scene === "vocab3"){
+    revealAnswer = true;
+    cMr += 1;
+}
+if(scene === "vocab4"){
+    revealAnswer = true;
+    cMr += 1;
+}
+if(scene === "ind1"){
+    revealAnswer = true;
+    cMr += 1;
+}
+if(scene === "ind2"){
+    revealAnswer = true;
+    cMr += 1;
+}
+if(scene === "ind3"){
+    revealAnswer = true;
+    cMr += 1;
+}
+if(scene === "ind4"){
+    revealAnswer = true;
+    cMr += 1;
+}
+if(scene === "misc1"){
+    revealAnswer = true;
+    cMr += 1;
+}
+if(scene === "misc2"){
+    revealAnswer = true;
+    cMr += 1;
+}
+if(scene === "misc3"){
+    revealAnswer = true;
+    cMr += 1;
+}
+if(scene === "misc4"){
+    revealAnswer = true;
+    cMr += 1;
 }
 if(scene === "error1"){
     scene = "game";
 }
-    if(scene === "start" && mouseX >= width/2-160*0.5 && mouseX <= width/2-160*0.5+160 && mouseY >= height/2+56 && mouseY <= height/2+56+74){
+    if(scene === "start" && mouseX >= width/2-160/2 && mouseX <= width/2-160/2+160 && mouseY >= height/2+-301 && mouseY <=height/2+-301+100){
         this.color1 = color(209, 209, 209);
         scene = "game";
+        po += 1;
     }
     
     if(scene === "game" && mouseX >= 0 && mouseX <= 120 && mouseY >= 100 && mouseY <= 200){
        scene = "hot1";
+       cMr -= 1;
     } 
     if(mouseX >= 24 && mouseX <= 24+20 && mouseY >= 564 && mouseY <= 564+20){
         points += pointMode;
@@ -444,88 +752,100 @@ if(mouseX >= 24 && mouseX <= 24+20 && mouseY >= 564 && mouseY <= 564+20 && point
     } 
 if(scene === "game" && mouseX >= 0 && mouseX <= 120 && mouseY >= 200 && mouseY <= 300){
        scene = "hot2";
+       cMr -= 1;
     } 
     
 if(scene === "game" && mouseX >= 0 && mouseX <= 120 && mouseY >= 300 && mouseY <= 400){
         scene = "hot3";
+        cMr -= 1;
     } 
     
 if(scene === "game" && mouseX >= 0 && mouseX <= 120 && mouseY >= 400 && mouseY <= 500){
+    cMr -= 1;
          scene = "hot4";
     } 
     
 if(scene === "game" && mouseX >= 120 && mouseX <= 240 && mouseY >= 100 && mouseY <= 200){
-        
+        scene = "inv1";
+        cMr -= 1;
     } 
     
 if(scene === "game" && mouseX >= 120 && mouseX <= 240 && mouseY >= 200 && mouseY <= 300){
-        
+        scene = "inv2";
+        cMr -= 1;
     } 
     
 if(scene === "game" && mouseX >= 120 && mouseX <= 240 && mouseY >= 300 && mouseY <= 400){
-        
+        scene = "inv3";
+        cMr -= 1;
     } 
     
 if(scene === "game" && mouseX >= 120 && mouseX <= 240 && mouseY >= 400 && mouseY <= 500){
-       
+       scene = "inv4";
+       cMr -= 1;
     } 
     
 if(scene === "game" && mouseX >= 240 && mouseX <= 360 && mouseY >= 100 && mouseY <= 200){
-        
+        scene = "vocab1";
+        cMr -= 1;
     } 
     
 if(scene === "game" && mouseX >= 240 && mouseX <= 360 && mouseY >= 200 && mouseY <= 300){
-       
+        scene = "vocab2";
+        cMr -= 1;
     } 
     
 if(scene === "game" && mouseX >= 240 && mouseX <= 360 && mouseY >= 300 && mouseY <= 400){
-        
+       scene = "vocab3";
+       cMr -= 1;
     } 
-    
-if(scene === "game" && mouseX >= 240 && mouseX <= 360 && mouseY >= 300 && mouseY <= 400){
-        
-    }
     
 if(scene === "game" && mouseX >= 240 && mouseX <= 360 && mouseY >= 400 && mouseY <= 500){
-        
+       scene = "vocab4";
+         cMr -= 1;
     } 
     
 if(scene === "game" && mouseX >= 360 && mouseX <= 480 && mouseY >= 100 && mouseY <= 200){
-       
+       scene = "ind1";
+         cMr -= 1;
     } 
     
 if(scene === "game" && mouseX >= 360 && mouseX <= 480 && mouseY >= 200 && mouseY <= 300){
-        
-    }
-    
-if(scene === "game" && mouseX >= 360 && mouseX <= 480 && mouseY >= 200 && mouseY <= 300){
-       
+         scene = "ind2";
+         cMr -= 1;
     }
     
 if(scene === "game" && mouseX >= 360 && mouseX <= 480 && mouseY >= 300 && mouseY <= 400){
-       
+        scene = "ind3";
+         cMr -= 1;
     } 
     
 if(scene === "game" && mouseX >= 360 && mouseX <= 480 && mouseY >= 400 && mouseY <= 500){
-      
+       scene = "ind4";
+         cMr -= 1;
     } 
     
 if(scene === "game" && mouseX >= 480 && mouseX <= 600 && mouseY >= 100 && mouseY <= 200){
-        
+        scene = "misc1";
+         cMr -= 1;
     } 
     
 if(scene === "game" && mouseX >= 480 && mouseX <= 600 && mouseY >= 200 && mouseY <= 300){
-       
+       scene = "misc2";
+         cMr -= 1;
     } 
     
 if(scene === "game" && mouseX >= 480 && mouseX <= 600 && mouseY >= 300 && mouseY <= 400){
-        
+        scene = "misc3";
+         cMr -= 1;
     } 
     
 if(scene === "game" && mouseX >= 480 && mouseX <= 600 && mouseY >= 400 && mouseY <= 500){
-        
+        scene = "misc4";
+         cMr -= 1;
     } 
 };
+
 
         
     }};
