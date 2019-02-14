@@ -24,7 +24,8 @@ HA YOU CANT LISTEN TO THE JEOPARDY THEME
      with (processingInstance) {
         size(600, 600); 
         frameRate(60);
-        //I tried to program with the cleanest code possible (that i could do).
+//I tried to program with the cleanest code possible (that i could do).
+//BETA version 1; error messages not fully functional
 var bold1 = 0;
 var points = 0;
 var points1 = 0;
@@ -747,6 +748,51 @@ if(scene === "error1"){
         points += pointMode;
         displayt.update();
     } 
+     if(mouseX >= 24+125 && mouseX <= 24+20+125 && mouseY >= 564 && mouseY <= 564+20){
+        points1 += pointMode;
+        displayt.update();
+    } 
+    if(mouseX >= 24+125 && mouseX <= 24+20+125 && mouseY >= 564 && mouseY <= 564+20){
+        points1 += pointMode;
+        displayt.update();
+    } 
+     if(mouseX >= 24+120+125 && mouseX <= 24+20+120+125 && mouseY >= 564 && mouseY <= 564+20){
+        points2 += pointMode;
+        displayt.update();
+    } 
+     if(mouseX >= 24+120+125+125 && mouseX <= 24+20+120+125+125 && mouseY >= 564 && mouseY <= 564+20){
+        points3 += pointMode;
+        displayt.update();
+    } 
+     if(mouseX >= 24+125+125+120+120 && mouseX <= 24+20+120+125+120+120 && mouseY >= 564 && mouseY <= 564+20){
+        points4 += pointMode;
+        displayt.update();
+    } 
+    //-
+      if(mouseX >= 24+45 && mouseX <= 24+20+45 && mouseY >= 564 && mouseY <= 564+20){
+        points -= pointMode;
+        displayt.update();
+    } 
+     if(mouseX >= 24+125+45 && mouseX <= 24+20+125+45 && mouseY >= 564 && mouseY <= 564+20){
+        points1 -= pointMode;
+        displayt.update();
+    } 
+    if(mouseX >= 24+125+45 && mouseX <= 24+20+125+45 && mouseY >= 564 && mouseY <= 564+20){
+        points1 -= pointMode;
+        displayt.update();
+    } 
+     if(mouseX >= 24+120+125+45 && mouseX <= 24+20+120+125+45 && mouseY >= 564 && mouseY <= 564+20){
+        points2 -= pointMode;
+        displayt.update();
+    } 
+     if(mouseX >= 24+120+125+125+45 && mouseX <= 24+20+120+125+125+45 && mouseY >= 564 && mouseY <= 564+20){
+        points3 -= pointMode;
+        displayt.update();
+    } 
+     if(mouseX >= 24+125+125+120+120+45 && mouseX <= 24+20+120+125+120+120+45 && mouseY >= 564 && mouseY <= 564+20){
+        points4 -= pointMode;
+        displayt.update();
+    } 
 if(mouseX >= 24 && mouseX <= 24+20 && mouseY >= 564 && mouseY <= 564+20 && pointMode === 0){
         scene = "error1";
     } 
@@ -845,6 +891,7 @@ if(scene === "game" && mouseX >= 480 && mouseX <= 600 && mouseY >= 400 && mouseY
          cMr -= 1;
     } 
 };
+
 
 
         
