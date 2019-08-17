@@ -25,7 +25,7 @@ HA YOU CANT LISTEN TO THE JEOPARDY THEME
         size(600, 600); 
         frameRate(60);
 //I tried to program with the cleanest code possible (that i could do).
-//BETA version 1; error messages not fully functional
+//BETA version 1.1; error messages functional
 var bold1 = 0;
 var points = 0;
 var points1 = 0;
@@ -105,17 +105,16 @@ Displayt.prototype.update = function(){
       rect(69+125+120+120+120, 564, 20, 20);
       fill(0, 0, 0);
       textSize(20);
-      text("^", 28, 584);
-      text("^", 28+125, 584);
-      text("^", 28+125+125-5, 584);
-      text("^", 29+125+125-5+120, 584);
-      text("^", 27+125+125-5+120+120, 584);
-      textSize(37);
-      text("˅", 73+245+120+121, 592);
-      text("˅", 73, 592);
-      text("˅", 73+245+120, 592);
-      text("˅", 73+245, 592);
-      text("˅", 73+125, 592);
+      text("↑", 29, 579);
+      text("↑", 29+125, 579);
+      text("↑", 29+125+125-5, 579);
+      text("↑", 29+125+125-5+120, 579);
+      text("↑", 29+125+125-5+120+120, 579);
+      text("↓", 75+245+120+121, 579);
+      text("↓", 75, 579);
+      text("↓", 75+245+120, 579);
+      text("↓", 75+245, 579);
+      text("↓", 75+125, 579);
       textSize(20);
       //guests
       fill(255, 204, 0);
@@ -238,7 +237,7 @@ strokeWeight(bold1);
     title.update();
     } else{bold1 = 0;}
     if(scene === "game"){
-        revealAnswer = false;
+    revealAnswer = false;
     pointMode = 0;
       background(6,12,233);  
       stroke(0, 0, 0);
@@ -641,6 +640,96 @@ if(scene === "error1"){
     fill(255, 0, 0);
     text("ERROR: You tried to add or \nsubtract points when there \nwere no points available to be \nadded or subtracted.\nError Code: 505\n(click to exit)", 154, 236);
 }
+if(scene === "error2"){
+    textSize(20);
+    stroke(0, 0, 0);
+    fill(255, 255, 255, 0.5);
+    rect(0, 0, width, height);
+    fill(255, 255, 255);
+    rect(width/2-300*0.5, height/2-200*0.5, 300, 200);
+    fill(255, 0, 0);
+    text("ERROR: You tried to add or \nsubtract points when there \nwere no points available to be \nadded or subtracted.\nError Code: 505\n(click to exit)", 154, 236);
+}
+if(scene === "error3"){
+    textSize(20);
+    stroke(0, 0, 0);
+    fill(255, 255, 255, 0.5);
+    rect(0, 0, width, height);
+    fill(255, 255, 255);
+    rect(width/2-300*0.5, height/2-200*0.5, 300, 200);
+    fill(255, 0, 0);
+    text("ERROR: You tried to add or \nsubtract points when there \nwere no points available to be \nadded or subtracted.\nError Code: 505\n(click to exit)", 154, 236);
+}
+if(scene === "error4"){
+    textSize(20);
+    stroke(0, 0, 0);
+    fill(255, 255, 255, 0.5);
+    rect(0, 0, width, height);
+    fill(255, 255, 255);
+    rect(width/2-300*0.5, height/2-200*0.5, 300, 200);
+    fill(255, 0, 0);
+    text("ERROR: You tried to add or \nsubtract points when there \nwere no points available to be \nadded or subtracted.\nError Code: 505\n(click to exit)", 154, 236);
+}
+if(scene === "error5"){
+    textSize(20);
+    stroke(0, 0, 0);
+    fill(255, 255, 255, 0.5);
+    rect(0, 0, width, height);
+    fill(255, 255, 255);
+    rect(width/2-300*0.5, height/2-200*0.5, 300, 200);
+    fill(255, 0, 0);
+    text("ERROR: You tried to add or \nsubtract points when there \nwere no points available to be \nadded or subtracted.\nError Code: 505\n(click to exit)", 154, 236);
+}
+if(scene === "error6"){
+    textSize(20);
+    stroke(0, 0, 0);
+    fill(255, 255, 255, 0.5);
+    rect(0, 0, width, height);
+    fill(255, 255, 255);
+    rect(width/2-300*0.5, height/2-200*0.5, 300, 200);
+    fill(255, 0, 0);
+    text("ERROR: You tried to add or \nsubtract points when there \nwere no points available to be \nadded or subtracted.\nError Code: 505\n(click to exit)", 154, 236);
+}
+if(scene === "error7"){
+    textSize(20);
+    stroke(0, 0, 0);
+    fill(255, 255, 255, 0.5);
+    rect(0, 0, width, height);
+    fill(255, 255, 255);
+    rect(width/2-300*0.5, height/2-200*0.5, 300, 200);
+    fill(255, 0, 0);
+    text("ERROR: You tried to add or \nsubtract points when there \nwere no points available to be \nadded or subtracted.\nError Code: 505\n(click to exit)", 154, 236);
+}
+if(scene === "error8"){
+    textSize(20);
+    stroke(0, 0, 0);
+    fill(255, 255, 255, 0.5);
+    rect(0, 0, width, height);
+    fill(255, 255, 255);
+    rect(width/2-300*0.5, height/2-200*0.5, 300, 200);
+    fill(255, 0, 0);
+    text("ERROR: You tried to add or \nsubtract points when there \nwere no points available to be \nadded or subtracted.\nError Code: 505\n(click to exit)", 154, 236);
+}
+if(scene === "error9"){
+    textSize(20);
+    stroke(0, 0, 0);
+    fill(255, 255, 255, 0.5);
+    rect(0, 0, width, height);
+    fill(255, 255, 255);
+    rect(width/2-300*0.5, height/2-200*0.5, 300, 200);
+    fill(255, 0, 0);
+    text("ERROR: You tried to add or \nsubtract points when there \nwere no points available to be \nadded or subtracted.\nError Code: 505\n(click to exit)", 154, 236);
+}
+if(scene === "error10"){
+    textSize(20);
+    stroke(0, 0, 0);
+    fill(255, 255, 255, 0.5);
+    rect(0, 0, width, height);
+    fill(255, 255, 255);
+    rect(width/2-300*0.5, height/2-200*0.5, 300, 200);
+    fill(255, 0, 0);
+    text("ERROR: You tried to add or \nsubtract points when there \nwere no points available to be \nadded or subtracted.\nError Code: 505\n(click to exit)", 154, 236);
+}
 if(scene === "game"){
     revealAnswer = false;
 }
@@ -789,6 +878,34 @@ if(scene === "error1"){
 if(mouseX >= 24 && mouseX <= 24+20 && mouseY >= 564 && mouseY <= 564+20 && pointMode === 0){
         scene = "error1";
     } 
+if(mouseX >= 24+125 && mouseX <= 24+20+125 && mouseY >= 564 && mouseY <= 564+20 && pointMode === 0){
+        scene = "error2";
+    } 
+if(mouseX >= 24+120+125 && mouseX <= 24+20+120+125 && mouseY >= 564 && mouseY <= 564+20 && pointMode === 0){
+        scene = "error3";
+    } 
+if(mouseX >= 24+120+125+125 && mouseX <= 24+20+120+125+125 && mouseY >= 564 && mouseY <= 564+20 && pointMode === 0){
+        scene = "error4";
+    } 
+if(mouseX >= 24+125+125+120+120 && mouseX <= 24+20+120+125+120+120 && mouseY >= 564 && mouseY <= 564+20 && pointMode === 0){
+        scene = "error5";
+    } 
+if(mouseX >= 24+45 && mouseX <= 24+20+45 && mouseY >= 564 && mouseY <= 564+20 && pointMode === 0){
+        scene = "error6";
+    } 
+if(mouseX >= 24+125+45 && mouseX <= 24+20+125+45 && mouseY >= 564 && mouseY <= 564+20 && pointMode === 0){
+        scene = "error7";
+    } 
+if(mouseX >= 24+120+125+45 && mouseX <= 24+20+120+125+45 && mouseY >= 564 && mouseY <= 564+20 && pointMode === 0){
+        scene = "error8";
+    } 
+if(mouseX >= 24+120+125+125+45 && mouseX <= 24+20+120+125+125+45 && mouseY >= 564 && mouseY <= 564+20 && pointMode === 0){
+        scene = "error9";
+    } 
+if(mouseX >= 24+125+125+120+120+45 && mouseX <= 24+20+120+125+120+120+45 && mouseY >= 564 && mouseY <= 564+20 && pointMode === 0){
+        scene = "error10";
+    } 
+
 if(scene === "game" && mouseX >= 0 && mouseX <= 120 && mouseY >= 200 && mouseY <= 300){
        scene = "hot2";
        cMr -= 1;
